@@ -1,17 +1,27 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Button, Text, theme } from 'galio-framework';
 
-const Button = ({ onPress, children }) => {
+import materialTheme from '../../constants/Theme.js';
+
+
+const grButton = ({ onPress, children, gradient, style }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
+  <LinearGradient 
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 0 }}
+  locations={[0.2, 1]}
+  style={[styles.gradient, style]}
+  colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}>
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>
     </TouchableOpacity>
+  </LinearGradient>
   );
 };
 
@@ -36,4 +46,4 @@ const styles = {
   }
 };
 
-export default Button;
+export default grButton;

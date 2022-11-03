@@ -21,10 +21,10 @@ const AlbumDetail = ({navigation, title, albumId}) => {
       </CardSection>
 
       <CardSection>
-        <Button
+        <grButton
           onPress={() => navigation.navigate('photoList', {albumId: albumId})}>
           See Now!
-        </Button>
+        </grButton>
       </CardSection>
     </Card>
   );

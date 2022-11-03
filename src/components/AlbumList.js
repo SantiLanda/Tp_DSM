@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, {Component, useEffect, useState} from 'react';
+import {ScrollView, Text, View, FlatList} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
-function Album(props) {
+function AlbumList(props) {
   const [photoset, setState] = useState(null);
   useEffect(() => {
     axios
@@ -15,15 +15,20 @@ function Album(props) {
       });
   })
 
-funcion renderAlbums(){
-  rreturn photos.map((album) => (
+function renderAlbums(){
+  const renderItem = ({ item }) => (
     <AlbumDetail
-      navigation={navigation}
-      key={album.id}
-      title={album.title._content}
-      albumId={album.id}
-    />
-  ));
+            navigation={props.navigation}
+            key={item.id}
+            title={item.title._content}
+            albumId={item.id}
+    />);
+
+  return (
+
+      <FlatList data={photoset} renderItem = {renderItem}
+        keyExtractor={item => item.id}/>
+  )
 };
 
 if (!photoset) {
@@ -42,7 +47,7 @@ return (
 
 export default AlbumList;
 
-/*/
+/*
 class AlbumList extends Component {
   state = {photoset: null};
 
@@ -82,4 +87,4 @@ class AlbumList extends Component {
   }
 }
 
-export default AlbumList;
+export default AlbumList; */
