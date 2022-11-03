@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Button, Text, theme } from 'galio-framework';
 
 const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
