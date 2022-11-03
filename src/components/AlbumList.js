@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
-function Album(props) {
+function AlbumList(props) {
   const [photoset, setState] = useState(null);
   useEffect(() => {
     axios
@@ -15,10 +15,10 @@ function Album(props) {
       });
   })
 
-funcion renderAlbums(){
-  rreturn photos.map((album) => (
+function renderAlbums(){
+  return photoset.map((album) => (
     <AlbumDetail
-      navigation={navigation}
+      navigation={props.navigation}
       key={album.id}
       title={album.title._content}
       albumId={album.id}
@@ -82,4 +82,4 @@ class AlbumList extends Component {
   }
 }
 
-export default AlbumList;
+export default AlbumList;*/
