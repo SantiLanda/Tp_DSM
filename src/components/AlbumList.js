@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from 'react';
-import {ScrollView, Text, View, FlatList} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -16,6 +16,7 @@ function AlbumList(props) {
   })
 
 function renderAlbums(){
+  
   const renderItem = ({ item }) => (
     <AlbumDetail
             navigation={props.navigation}
@@ -25,10 +26,16 @@ function renderAlbums(){
     />);
 
   return (
-
+    
       <FlatList data={photoset} renderItem = {renderItem}
         keyExtractor={item => item.id}/>
   )
+    /*<AlbumDetail
+      navigation={props.navigation}
+      key={album.id}
+      title={album.title._content}
+      albumId={album.id}
+    />*/
 };
 
 if (!photoset) {
