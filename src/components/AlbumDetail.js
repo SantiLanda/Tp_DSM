@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View, Image, Linking} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
-import Button from './Button';
+import GrButton from './Button';
 
 const AlbumDetail = ({navigation, title, albumId}) => {
   const {
@@ -21,10 +21,10 @@ const AlbumDetail = ({navigation, title, albumId}) => {
       </CardSection>
 
       <CardSection>
-        <grButton
+        <GrButton
           onPress={() => navigation.navigate('photoList', {albumId: albumId})}>
-          See Now!
-        </grButton>
+          <Text>See Now!</Text> 
+        </GrButton>
       </CardSection>
     </Card>
   );

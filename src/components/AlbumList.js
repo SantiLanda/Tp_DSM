@@ -1,7 +1,8 @@
 import React, {Component, useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View, FlatList} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
+
 
 function AlbumList(props) {
   const [photoset, setState] = useState(null);
@@ -47,7 +48,7 @@ if (!photoset) {
 }
 return (
   <View style={{flex: 1}}>
-    <ScrollView>{renderAlbums()}</ScrollView>
+    {renderAlbums()}
   </View>
 );
 } 

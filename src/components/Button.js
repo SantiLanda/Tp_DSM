@@ -3,25 +3,26 @@ import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Button, Text, theme } from 'galio-framework';
 
-import materialTheme from '../../constants/Theme.js';
+import materialTheme from '../../constants/Theme';
 
 
-const grButton = ({ onPress, children, gradient, style }) => {
+const GrButton = ({ gradient, onPress, children, style, ...props}) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-  <LinearGradient 
-  start={{ x: 0, y: 0 }}
-  end={{ x: 1, y: 0 }}
-  locations={[0.2, 1]}
-  style={[styles.gradient, style]}
-  colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}>
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text style={textStyle}>
-        {children}
-      </Text>
-    </TouchableOpacity>
-  </LinearGradient>
+    <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          locations={[0.2, 1]}
+          style={[styles.gradient, style]}
+          colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}
+        >
+      <Button onPress={onPress} style={styles.gradient}>
+        <Text style={textStyle}>
+         {children}
+        </Text>
+      </Button>
+    </LinearGradient>
   );
 };
 
@@ -43,7 +44,11 @@ const styles = {
     borderColor: '#007aff',
     marginLeft: 5,
     marginRight: 5
+  },
+  gradient: {
+    borderWidth: 0,
+    borderRadius: theme.SIZES.BASE * 2,
   }
 };
 
-export default grButton;
+export default GrButton;
