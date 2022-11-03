@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View, FlatList} from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
 
@@ -60,14 +60,20 @@ function PhotoList(props) {
   })
 
   function renderAlbums() {
-    return photos.map((photo) => (
+  
+    const renderItem = ({ item }) => (
       <PhotoDetail
-        key={photo.title}
-        title={photo.title}
-        imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
-      />
-    ));
-  };
+        key={item.title}
+        title={item.title}
+        imageUrl={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}
+      />);
+    return(
+      
+      <FlatList data={photos} renderItem = {renderItem}
+        keyExtractor={item => item.id}/>
+        //keyExtractor={photo => photo.id}/>
+    )
+    };
   
   if (!photos) {
     return (
