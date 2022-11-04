@@ -37,6 +37,8 @@ const styles = {
   },
   headerTextStyle: {
     fontSize: 18,
+    color: '#fff',
+    justifyContent: 'center'
   },
   thumbnailStyle: {
     height: 50,

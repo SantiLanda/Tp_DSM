@@ -78,13 +78,13 @@ function PhotoList(props) {
   if (!photos) {
     return (
       <View style={{flex: 1}}>
-        <Text>Loading...</Text>
+        <Text style={{color:'#fff'}}>Loading...</Text>
       </View>
     );
   }
   return (
     <View style={{flex: 1}}>
-      <ScrollView>{renderAlbums()}</ScrollView>
+      {renderAlbums()}
     </View>
   );
 } 

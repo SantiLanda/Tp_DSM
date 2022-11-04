@@ -42,7 +42,7 @@ function renderAlbums(){
 if (!photoset) {
   return (
     <View style={{flex: 1}}>
-      <Text>Loading...</Text>
+      <Text style={{color:'#fff'}}>Loading...</Text>
     </View>
   );
 }

@@ -42,6 +42,7 @@ const styles = {
   },
   headerTextStyle: {
     fontSize: 18,
+    color: '#fff'
   },
   thumbnailStyle: {
     height: 50,
@@ -49,6 +50,7 @@ const styles = {
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',
+    color: '',
     alignItems: 'center',
     marginLeft: 10,
     marginRight: 10,

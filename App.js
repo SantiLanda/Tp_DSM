@@ -31,10 +31,18 @@ import {createStackNavigator} from '@react-navigation/stack';
  
  
 const Stack = createStackNavigator();
+const styles = {
+  backgroundColor: '#141414'
+}
 
 App = () => (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+        headerStyle: { elevation: 0, backgroundColor: '#' },
+        headerTintColor: '#fff',
+        headerTitleStyle: {color: '#fff'},
+        cardStyle: { backgroundColor: '#141414' }
+    }}>
       <Stack.Screen
         name="albumList"
         component={AlbumList}
@@ -48,4 +56,7 @@ App = () => (
     </Stack.Navigator>
   </NavigationContainer>
 );
+
+
+
  export default App;

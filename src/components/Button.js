@@ -17,11 +17,11 @@ const GrButton = ({ gradient, onPress, children, style, ...props}) => {
           style={[styles.gradient, style]}
           colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}
         >
-      <Button onPress={onPress} style={styles.btGr}>
+      <TouchableOpacity onPress={onPress} style={[styles.buttonStyle, style]}>
         <Text style={textStyle}>
          {children}
         </Text>
-      </Button>
+      </TouchableOpacity>
     </LinearGradient>
   );
 };
@@ -38,10 +38,7 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#007aff',
+    borderWidth: 0,
     marginLeft: 5,
     marginRight: 5
   },
@@ -49,20 +46,20 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     borderWidth: 0,
-    borderRadius: 5,
+    borderRadius: 10,
     marginLeft: 5,
     marginRight: 5,
     alignItems: 'center'
   },
   btGr: {
     flex: 1,
-    alignSelf: 'stretch',
+    color: '#7fb026',
     borderWidth: 0,
     borderRadius: 5,
     marginLeft: 5,
     marginRight: 5,
-    alignItems: 'center',
-    display: 'flex',
+    
+    
     justifyContent: 'center',
         
   }
