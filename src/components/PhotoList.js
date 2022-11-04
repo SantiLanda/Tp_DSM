@@ -1,8 +1,8 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect} from 'react';
 import {ScrollView, Text, View, FlatList} from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
-import {useState, setPhotos} from 'redux';
+import {useSelector, useDispatch } from 'react-redux';
 import {loadPhotos} from '../actions/actions';
 
 /*
@@ -52,10 +52,19 @@ class PhotoList extends Component {
 function PhotoList(props) {
   //const [photos, setPhotos] = useState(null)
   const photos = useSelector(store => store.photos);
+  const photosLoaded = useSelector(store => store.photosLoaded)
   const dispatch = useDispatch();  
+ 
   useEffect(()=> {
-    loadPhotos(props.route.params.albumId)
-  })
+    axios
+      .get(
+        `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=${props.route.params.albumId}&user_id=137290658%40N08&format=json&nojsoncallback=1`,
+      )
+      .then((response) =>
+        dispatch(loadPhotos(response.data.photoset.photo)),
+      );
+  }
+  )
 
   function renderAlbums() {
   
@@ -67,13 +76,13 @@ function PhotoList(props) {
       />);
     return(
       
-      <FlatList data={photos} renderItem = {renderItem}
+      <FlatList data={photosLoaded} renderItem = {renderItem}
         keyExtractor={item => item.id}/>
         //keyExtractor={photo => photo.id}/>
     )
     };
   
-  if (!photos) {
+  if (!photosLoaded) {
     return (
       <View style={{flex: 1}}>
         <Text style={{color:'#fff'}}>Loading...</Text>
@@ -82,7 +91,7 @@ function PhotoList(props) {
   }
   return (
     <View style={{flex: 1}}>
-      {renderAlbums()}
+      {renderAlbums()} 
     </View>
   );
 } 

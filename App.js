@@ -14,8 +14,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import App from "./App";
-import reducer from "./";
+import reducer from "./src/components/reducer";
 
  import {
    SafeAreaView,
@@ -41,10 +40,11 @@ const styles = {
   backgroundColor: '#141414'
 }
 
+const store = createStore(reducer);
+
 App = () => (
-  
-  <Provider store = {reduxStore}>
-    <NavigationContainer>
+  <NavigationContainer>
+    <Provider store ={reduxStore}> 
       <Stack.Navigator screenOptions={{
           headerStyle: { elevation: 0, backgroundColor: '#' },
           headerTintColor: '#fff',
@@ -56,14 +56,17 @@ App = () => (
           component={AlbumList}
           options={{title: 'Albums'}}
         />
+      
         <Stack.Screen
           name="photoList"
           component={PhotoList}
           options={{title: 'Photos'}}
         />
+      
       </Stack.Navigator>
-    </NavigationContainer>
-  </Provider>
+    </Provider>
+  </NavigationContainer>
+  
   
 );
 

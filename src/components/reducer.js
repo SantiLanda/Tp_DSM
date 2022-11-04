@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
-//Considerando la reduccion de las URL's pertenecientes a las imagenes
-const photosReducer = (state = null, action) => {
+  const photosLoadedReducer = (state = null, action) => {
+    if (action.type === "PHOTOS") {
+      return action.payload;
+    }
+  
     return state;
   };
 
-  export default combineReducers({photos:photosReducer});
+  export default combineReducers({ photosLoaded: photosLoadedReducer});
