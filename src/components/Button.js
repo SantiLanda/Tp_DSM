@@ -17,7 +17,7 @@ const GrButton = ({ gradient, onPress, children, style, ...props}) => {
           style={[styles.gradient, style]}
           colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}
         >
-      <Button onPress={onPress} style={styles.gradient, styles.btGr}>
+      <Button onPress={onPress} style={styles.btGr}>
         <Text style={textStyle}>
          {children}
         </Text>
@@ -55,6 +55,13 @@ const styles = {
     alignItems: 'center'
   },
   btGr: {
+    flex: 1,
+    alignSelf: 'stretch',
+    borderWidth: 0,
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
         
